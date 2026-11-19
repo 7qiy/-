@@ -1,0 +1,7 @@
+# 姓名：董琦媛 | 学号：24001010728 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash
+
+node_modules/
+.env
+.screenshots/
+*.log
+.DS_Store

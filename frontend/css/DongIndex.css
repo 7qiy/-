@@ -1,0 +1,407 @@
+/**
+ * 姓名：董琦媛 | 学号：24001010728 | 时间：2026-11-19 | 大模型：DeepSeek-V4.1-Flash
+ * 首页样式：闲鱼黄黑配色 + 暗色玻璃拟态风格
+ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --DongGold: #ffda00;
+  --DongGoldLight: #ffe95c;
+  --DongGoldDeep: #ffb800;
+  --DongInk: #0b0d12;
+  --DongInkSoft: #12151d;
+  --DongText: #f2f4f8;
+  --DongTextMuted: #9aa3b2;
+  --DongBorder: rgba(255, 255, 255, 0.1);
+  --DongGlass: rgba(255, 255, 255, 0.045);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(255, 218, 0, 0.14), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(80, 120, 255, 0.14), transparent 62%),
+    linear-gradient(160deg, var(--DongInk) 0%, var(--DongInkSoft) 55%, #0a0c11 100%);
+  color: var(--DongText);
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== 背景 ==================== */
+.DongCanvasBackground {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.DongGlow {
+  position: fixed;
+  z-index: 0;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.DongGlowGold {
+  top: -180px;
+  left: -140px;
+  background: rgba(255, 218, 0, 0.55);
+}
+
+.DongGlowBlue {
+  right: -180px;
+  bottom: -220px;
+  background: rgba(64, 110, 255, 0.45);
+}
+
+/* ==================== 布局 ==================== */
+.DongMain {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  padding: 76px 0 24px;
+}
+
+/* ==================== 首屏标题 ==================== */
+.DongHero {
+  text-align: center;
+  animation: DongFadeUp 0.9s ease both;
+}
+
+.DongHeroTag {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 218, 0, 0.32);
+  background: rgba(255, 218, 0, 0.07);
+  color: var(--DongGold);
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.DongHeroTitle {
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  background: linear-gradient(120deg, #ffffff 0%, var(--DongGoldLight) 52%, var(--DongGoldDeep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 60px rgba(255, 218, 0, 0.18);
+}
+
+.DongHeroDesc {
+  margin-top: 16px;
+  color: var(--DongTextMuted);
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.DongBadgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.DongBadge {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--DongBorder);
+  background: rgba(255, 255, 255, 0.05);
+  color: #d7dce6;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+}
+
+.DongBadgeGold {
+  border-color: rgba(255, 218, 0, 0.42);
+  background: rgba(255, 218, 0, 0.09);
+  color: var(--DongGold);
+}
+
+/* ==================== 信息卡 ==================== */
+.DongProfile {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 46px;
+  padding: 26px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--DongBorder);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+  animation: DongFadeUp 0.9s 0.12s ease both;
+}
+
+.DongProfileItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 26px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.DongProfileItem:first-child {
+  border-left: none;
+}
+
+.DongProfileLabel {
+  color: var(--DongTextMuted);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.DongProfileValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  word-break: break-all;
+}
+
+/* ==================== 导航区 ==================== */
+.DongNavSection {
+  margin-top: 62px;
+  animation: DongFadeUp 0.9s 0.22s ease both;
+}
+
+.DongSectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.DongSectionTitle {
+  position: relative;
+  padding-left: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.DongSectionTitle::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--DongGoldLight), var(--DongGoldDeep));
+  box-shadow: 0 0 16px rgba(255, 218, 0, 0.6);
+}
+
+.DongSectionCount {
+  color: var(--DongTextMuted);
+  font-size: 13px;
+}
+
+.DongPageList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.DongPageLink {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid var(--DongBorder);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.02));
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.DongPageLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(420px 200px at 100% 0%, rgba(255, 218, 0, 0.14), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.DongPageLink:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 218, 0, 0.55);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 218, 0, 0.18) inset;
+}
+
+.DongPageLink:hover::before {
+  opacity: 1;
+}
+
+.DongPageIcon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  border: 1px solid rgba(255, 218, 0, 0.28);
+  background: rgba(255, 218, 0, 0.1);
+  color: var(--DongGold);
+  transition: background 0.28s ease, transform 0.28s ease;
+}
+
+.DongPageLink:hover .DongPageIcon {
+  background: rgba(255, 218, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.DongPageIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.DongPageBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.DongPageTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.DongPageState {
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 222, 128, 0.32);
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.DongPageDesc {
+  margin-top: 8px;
+  color: var(--DongTextMuted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.DongPageArrow {
+  align-self: center;
+  color: var(--DongGold);
+  font-size: 18px;
+  opacity: 0.7;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.DongPageLink:hover .DongPageArrow {
+  transform: translateX(5px);
+  opacity: 1;
+}
+
+/* ==================== 页脚 ==================== */
+.DongFooter {
+  position: relative;
+  z-index: 1;
+  padding: 64px 20px 34px;
+  text-align: center;
+  color: #667085;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* ==================== 动画 ==================== */
+@keyframes DongFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== 响应式 ==================== */
+@media (max-width: 900px) {
+  .DongProfile {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 22px;
+  }
+
+  .DongProfileItem {
+    padding: 4px 22px;
+  }
+
+  .DongProfileItem:nth-child(odd) {
+    border-left: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .DongMain {
+    padding-top: 52px;
+  }
+
+  .DongProfile {
+    grid-template-columns: 1fr;
+  }
+
+  .DongProfileItem {
+    border-left: none;
+  }
+
+  .DongPageList {
+    grid-template-columns: 1fr;
+  }
+
+  .DongHeroTag {
+    letter-spacing: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
