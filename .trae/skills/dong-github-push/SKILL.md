@@ -35,7 +35,12 @@ version: "1.0.0"
      HostName ssh.github.com
      Port 443
      User git
+     IdentityFile ~/.ssh/id_ed25519_neusoft
+     IdentitiesOnly yes
    ```
+
+   当前 GitHub 账号（7qiy）绑定的公钥是 `~/.ssh/id_ed25519_neusoft.pub`
+   （`SHA256:0jzhWz086RAfWNZ45Epr5kpk2a58g7QSWCpZrRqroRI`）。
 
 3. 若远程仓库不存在，`git push` 会报 `Repository not found`，此时停止并提示用户先在 GitHub 手动创建仓库（不要自动创建）。
 
